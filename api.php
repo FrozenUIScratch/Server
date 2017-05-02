@@ -14,14 +14,9 @@
 
 		http_response_code(200);
 
-	} elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
-		$req = $_POST['request'];
-		if ($req == "getweb"){
-			$htmlDATA = file_get_contents($_POST['data']);
-			echo $htmlDATA;
-		}
-
-
+	} elseif ($_SERVER['REQUEST_METHOD'] == "POST"){
+		$htmlDATA = file_get_contents(file_get_contents("php://input"));
+		echo $htmlDATA;
 		http_response_code(200);
 	} else {
 		echo("405");
